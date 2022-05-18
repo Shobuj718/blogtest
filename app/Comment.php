@@ -11,7 +11,7 @@ class Comment extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['user_id', 'post_id', 'parent_id'];
+    protected $fillable = ['user_id', 'post_id', 'parent_id', 'body'];
 
     public function user(){
         return $this->belongsTo(User::class);

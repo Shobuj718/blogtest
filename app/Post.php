@@ -11,9 +11,9 @@ class Post extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'body'];
+    protected $fillable = ['title', 'body', 'image'];
 
     public function comments(){
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
     }
 }
