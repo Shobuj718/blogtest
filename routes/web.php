@@ -23,10 +23,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::get('/posts', 'PostController@index')->name('post.index');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/posts', 'PostController@index')->name('post.index');
 Route::get('/create-post', 'PostController@create')->name('create.post');
 Route::post('/store-post', 'PostController@store')->name('store.post');
 Route::get('/show/{id}', 'PostController@show')->name('post.show');
 
 Route::post('comment-store', 'CommentController@store')->name('comment.store');
+
+});
